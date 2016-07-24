@@ -1,0 +1,39 @@
+9/4/12:
+"from_Bildr" working fine, with speeds (unitless) from 0.001 to 1
+"Stepper_07" seems to be working, but not so sure on Go Home, find reed switch, and from home go so many steps code.
+"Stepper_08": not working yet, trying to incorp takePic subroutine
+"Take_pic_03": not working yet, trying to incorp smart polling for focus and shutter pins.
+
+
+
+High level:
+
+Go Home = yes
+	using go home direction and speed, run until switch closes
+	then go in direction of dirFromHome the appropriate steps
+
+then, set direction according to stepDir and go on with the code
+
+
+
+
+takePic
+
+if enough time between pictures has occurred:
+	set the focus pin to high
+
+if the focus pin is high, see if enough time has passed to set the shutter pin high
+
+delay for (2 seconds - (focusdelay + shutterdelay))
+toggle focusPin
+delay for focusdelay
+toggle shutterPin
+delay for shutterdelay
+toggle focusPin
+toggle shutterPin
+
+
+takePic2
+every Interval seconds, toggle focusPin
+
+boolean is true, toggle boolean for 
